@@ -5,13 +5,13 @@
  */
 package com.mycompany.crudventas.controller;
 
-import com.mycompany.crudventas.entity.clienteEntity;
 import com.mycompany.crudventas.dto.clienteDTO;
 import com.mycompany.crudventas.service.clienteService;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
 /**
  *
  * @author herio
@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/clientes")
 
 public class clienteController {
-    
+
     @Autowired
     private clienteService service;
 
@@ -42,7 +42,7 @@ public class clienteController {
 
     @PutMapping("/{id}")
     public clienteDTO actualizar(@PathVariable Long id,
-        @RequestBody clienteDTO cliente) {
+            @RequestBody clienteDTO cliente) {
         return service.actualizar(id, cliente);
     }
 

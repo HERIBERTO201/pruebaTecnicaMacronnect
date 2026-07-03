@@ -13,12 +13,11 @@ import javax.validation.constraints.NotBlank;
  *
  * @author herio
  */
-
 @Entity
 @Table(name = "clientes")
 
 public class clienteEntity {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

@@ -10,13 +10,13 @@ package com.mycompany.crudventas.dto;
  * @author herio
  */
 public class clienteDTO {
-    
+
     private Long id;
     private String nombre;
     private String email;
     private String telefono;
     private String direccion;
-    
+
     public clienteDTO() {
     }
 

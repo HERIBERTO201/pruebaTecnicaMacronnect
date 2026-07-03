@@ -1,6 +1,12 @@
 com\mycompany\crudventas\config\Security.class
 com\mycompany\crudventas\controller\clienteController.class
+com\mycompany\crudventas\dto\productoDTO.class
+com\mycompany\crudventas\controller\productoController.class
+com\mycompany\crudventas\entity\productoEntity.class
 com\mycompany\crudventas\repository\clienteRepository.class
 com\mycompany\crudventas\entity\clienteEntity.class
+com\mycompany\crudventas\service\productoService.class
+com\mycompany\crudventas\repository\productoRepository.class
 com\mycompany\crudventas\service\clienteService.class
+com\mycompany\crudventas\dto\clienteDTO.class
 com\mycompany\crudventas\crudVentasApplication.class

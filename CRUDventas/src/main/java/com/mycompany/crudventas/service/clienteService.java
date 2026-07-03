@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package com.mycompany.crudventas.service;
+
 import com.mycompany.crudventas.dto.clienteDTO;
 import com.mycompany.crudventas.entity.clienteEntity;
 import com.mycompany.crudventas.repository.clienteRepository;
@@ -19,10 +20,10 @@ import java.util.ArrayList;
  */
 @Service
 public class clienteService {
-    
+
     @Autowired
     private clienteRepository repository;
-    
+
     public List<clienteDTO> obtenerTodos() {
         List<clienteEntity> clientes = repository.findAll();
         List<clienteDTO> clientesDTO = new ArrayList<>();
@@ -47,42 +48,41 @@ public class clienteService {
     }
 
     public clienteDTO actualizar(Long id, clienteDTO dto) {
-    Optional<clienteEntity> optional = repository.findById(id);
-    if (!optional.isPresent()) {
-        return null;
+        Optional<clienteEntity> optional = repository.findById(id);
+        if (!optional.isPresent()) {
+            return null;
+        }
+        clienteEntity cliente = optional.get();
+        cliente.setNombre(dto.getNombre());
+        cliente.setEmail(dto.getEmail());
+        cliente.setTelefono(dto.getTelefono());
+        cliente.setDireccion(dto.getDireccion());
+        cliente = repository.save(cliente);
+        return toDTO(cliente);
     }
-    clienteEntity cliente = optional.get();
-    cliente.setNombre(dto.getNombre());
-    cliente.setEmail(dto.getEmail());
-    cliente.setTelefono(dto.getTelefono());
-    cliente.setDireccion(dto.getDireccion());
-    cliente = repository.save(cliente);
-    return toDTO(cliente);
-}
 
     public void eliminar(Long id) {
         repository.deleteById(id);
     }
-    
+
     private clienteDTO toDTO(clienteEntity cliente) {
-            clienteDTO dto = new clienteDTO();
-            dto.setId(cliente.getId());
-            dto.setNombre(cliente.getNombre());
-            dto.setEmail(cliente.getEmail());
-            dto.setTelefono(cliente.getTelefono());
-            dto.setDireccion(cliente.getDireccion());
+        clienteDTO dto = new clienteDTO();
+        dto.setId(cliente.getId());
+        dto.setNombre(cliente.getNombre());
+        dto.setEmail(cliente.getEmail());
+        dto.setTelefono(cliente.getTelefono());
+        dto.setDireccion(cliente.getDireccion());
         return dto;
     }
-    
+
     private clienteEntity toEntity(clienteDTO dto) {
-            clienteEntity cliente = new clienteEntity();
-            cliente.setId(dto.getId());
-            cliente.setNombre(dto.getNombre());
-            cliente.setEmail(dto.getEmail());
-            cliente.setTelefono(dto.getTelefono());
-            cliente.setDireccion(dto.getDireccion());
+        clienteEntity cliente = new clienteEntity();
+        cliente.setId(dto.getId());
+        cliente.setNombre(dto.getNombre());
+        cliente.setEmail(dto.getEmail());
+        cliente.setTelefono(dto.getTelefono());
+        cliente.setDireccion(dto.getDireccion());
         return cliente;
     }
-    
-}
 
+}

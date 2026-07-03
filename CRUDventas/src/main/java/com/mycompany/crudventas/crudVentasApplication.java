@@ -12,7 +12,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  *
  * @author herio
  */
-
 @SpringBootApplication
 public class crudVentasApplication {
 
