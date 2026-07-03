@@ -1,0 +1,6 @@
+com\mycompany\crudventas\config\Security.class
+com\mycompany\crudventas\controller\clienteController.class
+com\mycompany\crudventas\repository\clienteRepository.class
+com\mycompany\crudventas\entity\clienteEntity.class
+com\mycompany\crudventas\service\clienteService.class
+com\mycompany\crudventas\crudVentasApplication.class
