@@ -6,6 +6,7 @@
 package com.mycompany.crudventas.controller;
 
 import com.mycompany.crudventas.entity.clienteEntity;
+import com.mycompany.crudventas.dto.clienteDTO;
 import com.mycompany.crudventas.service.clienteService;
 import java.util.List;
 import java.util.Optional;
@@ -25,23 +26,23 @@ public class clienteController {
     private clienteService service;
 
     @GetMapping
-    public List<clienteEntity> obtenerTodos() {
+    public List<clienteDTO> obtenerTodos() {
         return service.obtenerTodos();
     }
 
     @GetMapping("/{id}")
-    public Optional<clienteEntity> obtenerPorId(@PathVariable Long id) {
+    public Optional<clienteDTO> obtenerPorId(@PathVariable Long id) {
         return service.obtenerPorId(id);
     }
 
     @PostMapping
-    public clienteEntity guardar(@RequestBody clienteEntity cliente) {
-        return service.guardar(cliente);
+    public clienteDTO guardar(@RequestBody clienteDTO dto) {
+        return service.guardar(dto);
     }
 
     @PutMapping("/{id}")
-    public clienteEntity actualizar(@PathVariable Long id,
-        @RequestBody clienteEntity cliente) {
+    public clienteDTO actualizar(@PathVariable Long id,
+        @RequestBody clienteDTO cliente) {
         return service.actualizar(id, cliente);
     }
 

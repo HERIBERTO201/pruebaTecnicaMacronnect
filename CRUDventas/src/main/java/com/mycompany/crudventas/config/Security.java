@@ -14,6 +14,7 @@ import org.springframework.security.web.SecurityFilterChain;
  *
  * @author herio
  */
+
 @Configuration
 public class Security {
     @Bean
