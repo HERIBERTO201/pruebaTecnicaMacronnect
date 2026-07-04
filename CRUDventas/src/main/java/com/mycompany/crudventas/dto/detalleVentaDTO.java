@@ -5,8 +5,6 @@
  */
 package com.mycompany.crudventas.dto;
 
-import com.mycompany.crudventas.entity.ventaEntity;
-import com.mycompany.crudventas.entity.productoEntity;
 
 /**
  *
@@ -14,8 +12,8 @@ import com.mycompany.crudventas.entity.productoEntity;
  */
 public class detalleVentaDTO {
     
-    private ventaEntity venta;
-    private productoEntity producto;
+    private Long ventaID;
+    private Long productoID;
     private Long id;
     private int cantidad;
     private double precioUnitario;
@@ -57,23 +55,23 @@ public class detalleVentaDTO {
         this.subtotal = subtotal;
     }
     
-    public ventaEntity getVenta()
+    public Long getVenta()
     {
-        return venta;
+        return ventaID;
     }
     
-    public void setVenta(ventaEntity venta)
+    public void setVenta(Long ventaID)
     {
-        this.venta = venta;
+        this.ventaID = ventaID;
     }
     
-    public productoEntity getProducto()
+    public Long getProducto()
     {
-        return producto;
+        return productoID;
     }
     
-    public void setProducto(productoEntity producto)
+    public void setProducto(Long productoID)
     {
-        this.producto = producto;
+        this.productoID = productoID;
     }
 }

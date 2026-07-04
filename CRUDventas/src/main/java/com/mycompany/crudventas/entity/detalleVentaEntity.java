@@ -18,8 +18,6 @@ import javax.validation.constraints.NotNull;
 @Table(name = "detalle_venta")
 public class detalleVentaEntity {
     
-    
-
     @NotNull
     @ManyToOne
     @JoinColumn(name = "venta_id")
@@ -84,7 +82,7 @@ public class detalleVentaEntity {
         return venta;
     }
     
-    public void setVenta(ventaEntity venta)
+    public void setVenta(ventaEntity  venta)
     {
         this.venta = venta;
     }

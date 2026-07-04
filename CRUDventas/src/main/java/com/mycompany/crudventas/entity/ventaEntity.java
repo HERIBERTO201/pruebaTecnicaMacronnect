@@ -5,12 +5,14 @@
  */
 package com.mycompany.crudventas.entity;
 
+import com.mycompany.crudventas.dto.detalleVentaDTO;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.*;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -42,10 +44,13 @@ public class ventaEntity {
     @JoinColumn(name = "cliente_id")
     private clienteEntity cliente;
 
+    @OneToMany(mappedBy = "venta", cascade = CascadeType.ALL)
+    private List<detalleVentaEntity> detalles;
+    
     @NotNull
     @Enumerated(EnumType.STRING)
     private ventastatus estado;
-
+    
     public Long getId() {
         return id;
     }

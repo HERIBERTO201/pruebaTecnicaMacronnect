@@ -5,9 +5,9 @@
  */
 package com.mycompany.crudventas.dto;
 
-import com.mycompany.crudventas.entity.clienteEntity;
 import com.mycompany.crudventas.entity.ventastatus;
 import java.util.Date;
+import java.util.List;
      
 /**
  *
@@ -19,8 +19,9 @@ public class ventaDTO {
     private Date fecha;
     private Double total;
     private String folio;
-    private clienteEntity cliente;
+    private Long clienteID;
     private ventastatus estado;
+    private List<detalleVentaDTO> detalles;
 
     public Long getId() {
         return id;
@@ -54,12 +55,12 @@ public class ventaDTO {
         this.folio = folio;
     }
 
-    public clienteEntity getClienteId() {
-        return cliente;
+    public Long getClienteId() {
+        return clienteID;
     }
 
-    public void setClienteId(clienteEntity cliente) {
-        this.cliente = cliente;
+    public void setClienteId(Long clienteID) {
+        this.clienteID = clienteID;
     }
 
     public ventastatus getEstado() {
@@ -68,5 +69,15 @@ public class ventaDTO {
 
     public void setEstado(ventastatus estado) {
         this.estado = estado;
+    }
+    
+    public List<detalleVentaDTO> getListDetalleVenta()
+    {
+        return detalles;
+    }
+    
+    public void setListDetalleVenta(List<detalleVentaDTO> detalles)
+    {
+        this.detalles = detalles;
     }
 }

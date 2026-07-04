@@ -8,12 +8,12 @@ package com.mycompany.crudventas.repository;
 import com.mycompany.crudventas.entity.ventaEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-
+import java.util.Optional;
 /**
  *
  * @author herio
  */
 @Repository
 public interface ventaRepository extends JpaRepository<ventaEntity, Long>{
-    
+    Optional<ventaEntity> findByFolio(String folio);
 }
