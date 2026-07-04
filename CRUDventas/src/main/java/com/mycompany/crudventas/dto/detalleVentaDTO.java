@@ -55,22 +55,22 @@ public class detalleVentaDTO {
         this.subtotal = subtotal;
     }
     
-    public Long getVenta()
+    public Long getVentaID()
     {
         return ventaID;
     }
     
-    public void setVenta(Long ventaID)
+    public void setVentaID(Long ventaID)
     {
         this.ventaID = ventaID;
     }
     
-    public Long getProducto()
+    public Long getProductoID()
     {
         return productoID;
     }
     
-    public void setProducto(Long productoID)
+    public void setProductoID(Long productoID)
     {
         this.productoID = productoID;
     }

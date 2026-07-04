@@ -16,41 +16,66 @@ import com.mycompany.crudventas.repository.productoRepository;
 import com.mycompany.crudventas.repository.ventaRepository;
 import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author herio
  */
+@Service
 public class detalleVentaService {
-    
+
     @Autowired
     private detalleVentaRepository repository;
     @Autowired
     private ventaRepository ventaRepository;
     @Autowired
     private productoRepository productoRepository;
-    
-    public List<detalleVentaDTO> obtenerTodos()
-    {
-        List<detalleVentaEntity> ventas = repository.findAll();
-        List<detalleVentaDTO> ventaDTO = new ArrayList<>();
-        for (detalleVentaEntity venta : ventas) {
-            ventaDTO.add(toDTO(venta));
+
+    public List<detalleVentaDTO> obtenerTodos() {
+        List<detalleVentaEntity> detalles = repository.findAll();
+        List<detalleVentaDTO> dto = new ArrayList<>();
+        for (detalleVentaEntity detalle : detalles) {
+            dto.add(toDTO(detalle));
         }
-        return ventaDTO;
+        return dto;
     }
 
-    public Optional<detalleVentaDTO> obtenerPorId(Long id)
-    {
-        Optional<detalleVentaEntity> venta = repository.findById(id);
-        if (!venta.isPresent()) {
+    public Optional<detalleVentaDTO> obtenerPorId(Long id) {
+        Optional<detalleVentaEntity> detalle = repository.findById(id);
+        if (!detalle.isPresent()) {
             return Optional.empty();
         }
-        return Optional.of(toDTO(venta.get()));
+        return Optional.of(toDTO(detalle.get()));
     }
 
     public void eliminar(Long id) {
         repository.deleteById(id);
+    }
+
+    public detalleVentaDTO guardar(detalleVentaDTO dto) {
+
+        detalleVentaEntity detalle = toEntity(dto);
+
+        detalle = repository.save(detalle);
+
+        return toDTO(detalle);
+    }
+
+    public detalleVentaDTO actualizar(Long id, detalleVentaDTO dto) {
+
+        Optional<detalleVentaEntity> optional = repository.findById(id);
+
+        if (!optional.isPresent()) {
+            return null;
+        }
+
+        detalleVentaEntity detalle = toEntity(dto);
+        detalle.setId(id);
+
+        detalle = repository.save(detalle);
+
+        return toDTO(detalle);
     }
     
     private detalleVentaDTO toDTO(detalleVentaEntity venta) {
@@ -58,23 +83,23 @@ public class detalleVentaService {
         dto.setId(venta.getId());
         dto.setCantidad(venta.getCantidad());
         dto.setPrecioUnitario(venta.getPrecioUnitario());
-        dto.setProducto(venta.getProducto().getId());
+        dto.setProductoID(venta.getProducto().getId());
         dto.setSubtotal(venta.getSubtotal());
-        dto.setVenta(venta.getVenta().getId());
+        dto.setVentaID(venta.getVenta().getId());
         return dto;
     }
-    
-    private detalleVentaEntity toEntity(detalleVentaDTO dto){
-    detalleVentaEntity detalle = new detalleVentaEntity();
-    ventaEntity venta = ventaRepository.findById(dto.getVenta())
-            .orElseThrow(() -> new RuntimeException("Venta no encontrada"));
-    productoEntity producto = productoRepository.findById(dto.getProducto())
-            .orElseThrow(() -> new RuntimeException("Producto no encontrado"));
-    detalle.setVenta(venta);
-    detalle.setProducto(producto);
-    detalle.setCantidad(dto.getCantidad());
-    detalle.setPrecioUnitario(dto.getPrecioUnitario());
-    detalle.setSubtotal(dto.getSubtotal());
-    return detalle;
+
+    private detalleVentaEntity toEntity(detalleVentaDTO dto) {
+        detalleVentaEntity detalle = new detalleVentaEntity();
+        ventaEntity venta = ventaRepository.findById(dto.getVentaID())
+                .orElseThrow(() -> new RuntimeException("Venta no encontrada"));
+        productoEntity producto = productoRepository.findById(dto.getProductoID())
+                .orElseThrow(() -> new RuntimeException("Producto no encontrado"));
+        detalle.setVenta(venta);
+        detalle.setProducto(producto);
+        detalle.setCantidad(dto.getCantidad());
+        detalle.setPrecioUnitario(dto.getPrecioUnitario());
+        detalle.setSubtotal(dto.getSubtotal());
+        return detalle;
     }
 }

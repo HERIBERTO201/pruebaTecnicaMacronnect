@@ -5,7 +5,6 @@
  */
 package com.mycompany.crudventas.entity;
 
-import com.mycompany.crudventas.dto.detalleVentaDTO;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.*;

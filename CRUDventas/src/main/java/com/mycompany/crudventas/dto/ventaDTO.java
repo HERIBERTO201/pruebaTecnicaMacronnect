@@ -71,12 +71,12 @@ public class ventaDTO {
         this.estado = estado;
     }
     
-    public List<detalleVentaDTO> getListDetalleVenta()
+    public List<detalleVentaDTO> getDetalles()
     {
         return detalles;
     }
     
-    public void setListDetalleVenta(List<detalleVentaDTO> detalles)
+    public void setDetalles(List<detalleVentaDTO> detalles)
     {
         this.detalles = detalles;
     }

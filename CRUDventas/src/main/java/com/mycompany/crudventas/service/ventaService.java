@@ -52,9 +52,14 @@ public class ventaService {
         return ventaDTO;
     }
 
-    ;
-    
-    
+    public Optional<ventaDTO> obtenerPorId(Long id) {
+        Optional<ventaEntity> venta = repository.findById(id);
+        if (!venta.isPresent()) {
+            return Optional.empty();
+        }
+        return Optional.of(toDTO(venta.get()));
+    }
+
     public Optional<ventaDTO> obtenerPorFolio(String folio) {
         Optional<ventaEntity> venta = repository.findByFolio(folio);
         if (!venta.isPresent()) {
@@ -84,11 +89,13 @@ public class ventaService {
     @Transactional
     public ventaDTO registrarVenta(ventaDTO dto) {
 
+        System.out.println(dto);
+        System.out.println("Cliente: " + dto.getClienteId());
+        System.out.println("Detalles: " + dto.getDetalles());
+        
         clienteEntity cliente = clienteRepository.findById(dto.getClienteId()).orElseThrow(() -> new RuntimeException("Cliente no encontrado"));
         ventaEntity venta = new ventaEntity();
-
         venta.setClienteId(cliente);
-
         venta.setFecha(new Date());
         venta.setEstado(ventastatus.ACTIVO);
         venta.setFolio("TEMP");
@@ -96,8 +103,8 @@ public class ventaService {
         venta = repository.save(venta);
         venta.setFolio("V" + String.format("%06d", venta.getId()));
         double total = 0;
-        for (detalleVentaDTO detalleDTO : dto.getListDetalleVenta()) {
-            productoEntity producto = productoRepository.findById(detalleDTO.getProducto())
+        for (detalleVentaDTO detalleDTO : dto.getDetalles()) {
+            productoEntity producto = productoRepository.findById(detalleDTO.getProductoID())
                     .orElseThrow(() -> new RuntimeException("Producto no encontrado"));
             if (producto.getStock() < detalleDTO.getCantidad()) {
                 throw new RuntimeException(
@@ -114,6 +121,7 @@ public class ventaService {
             producto.setStock(producto.getStock() - detalleDTO.getCantidad());
             productoRepository.save(producto);
             detalleVentaRepository.save(detalle);
+            System.out.println("Producto ID: " + detalleDTO.getProductoID());
         }
         venta.setTotal(total);
         repository.save(venta);
