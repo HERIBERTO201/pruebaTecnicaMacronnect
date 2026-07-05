@@ -1,0 +1,18 @@
+<div class="contenedor">
+    <aside>
+        <h2>Sistema de Ventas</h2>
+
+        <a routerLink="productos">Productos</a>
+
+        <a routerLink="clientes">Clientes</a>
+
+        <a routerLink="ventas">Ventas</a>
+
+        <button (click)="cerrarSesion()">
+            Cerrar sesión
+        </button>
+    </aside>
+    <main>
+        <router-outlet></router-outlet>
+    </main>
+</div>

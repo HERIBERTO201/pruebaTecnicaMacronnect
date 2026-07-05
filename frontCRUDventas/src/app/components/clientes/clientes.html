@@ -1,0 +1,57 @@
+<h2>Clientes</h2>
+
+<!-- FORM -->
+<form [formGroup]="formCliente" (ngSubmit)="guardar()">
+
+  <input placeholder="Nombre" formControlName="nombre">
+  <br><br>
+
+  <input placeholder="Email" formControlName="email">
+  <br><br>
+
+  <input placeholder="Teléfono" formControlName="telefono">
+  <br><br>
+
+  <input placeholder="Dirección" formControlName="direccion">
+  <br><br>
+
+  <button type="submit">
+    {{ editando ? 'Actualizar' : 'Guardar' }}
+  </button>
+
+  <button type="button" (click)="cancelarEdicion()" *ngIf="editando">
+    Cancelar
+  </button>
+
+</form>
+
+<hr>
+
+<!-- TABLE -->
+<table border="1" width="100%">
+
+  <tr>
+    <th>Nombre</th>
+    <th>Email</th>
+    <th>Teléfono</th>
+    <th>Dirección</th>
+    <th>Acciones</th>
+  </tr>
+
+  @for (cliente of clientes; track cliente.id) {
+
+    <tr>
+      <td>{{ cliente.nombre }}</td>
+      <td>{{ cliente.email }}</td>
+      <td>{{ cliente.telefono }}</td>
+      <td>{{ cliente.direccion }}</td>
+
+      <td>
+        <button (click)="editar(cliente)">Editar</button>
+        <button (click)="eliminar(cliente.id!)">Eliminar</button>
+      </td>
+    </tr>
+
+  }
+
+</table>

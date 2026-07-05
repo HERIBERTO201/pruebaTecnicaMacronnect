@@ -1,0 +1,65 @@
+<h2>Productos</h2>
+
+<!-- FORMULARIO -->
+<form [formGroup]="formProducto" (ngSubmit)="guardar()">
+
+  <input placeholder="Código" formControlName="codigo">
+  <br><br>
+
+  <input placeholder="Nombre" formControlName="nombre">
+  <br><br>
+
+  <input placeholder="Descripción" formControlName="descripcion">
+  <br><br>
+
+  <p>Precio</p>
+  <input type="number" placeholder="Precio" formControlName="precio">
+  <br><br>
+
+  <p>Stock</p>
+  <input type="number" placeholder="Stock" formControlName="stock">
+  <br><br>
+
+  <button type="submit">
+    {{ editando ? 'Actualizar' : 'Guardar' }}
+  </button>
+
+  <button type="button" (click)="cancelarEdicion()" *ngIf="editando">
+    Cancelar
+  </button>
+
+</form>
+
+<hr>
+
+<!-- TABLA -->
+<table border="1" width="100%">
+
+  <tr>
+    <th>Código</th>
+    <th>Nombre</th>
+    <th>Descripción</th>
+    <th>Precio</th>
+    <th>Stock</th>
+    <th>Acciones</th>
+  </tr>
+
+  @for (producto of productos; track producto.id) {
+
+    <tr>
+      <td>{{ producto.codigo }}</td>
+      <td>{{ producto.nombre }}</td>
+      <td>{{ producto.descripcion }}</td>
+      <td>{{ producto.precio }}</td>
+      <td>{{ producto.stock }}</td>
+
+      <td>
+        <button (click)="editar(producto)">Editar</button>
+        <button (click)="eliminar(producto.id!)">Eliminar</button>
+      </td>
+
+    </tr>
+
+  }
+
+</table>

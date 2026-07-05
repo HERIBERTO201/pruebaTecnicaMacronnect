@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Auth } from '../../../auth';
 import { LoginModel } from '../../../models/loginModel'
@@ -7,7 +8,7 @@ import { LoginModel } from '../../../models/loginModel'
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './login.html',
   styleUrl: './login.css',
 })
@@ -18,7 +19,10 @@ export class Login {
   password = '';
   error = '';
 
-  constructor(private auth: Auth) {}
+  constructor(
+    private auth: Auth,
+    private router: Router
+  ) {}
 
   login() {
 
@@ -31,18 +35,24 @@ export class Login {
       next: (res) => {
 
         if (res.success) {
-          this.auth.guardarSesion(res.usuario);
-          this.error = '';
-          alert('Login exitoso');
 
-          // opcional: redirigir
-          // window.location.href = '/ventas';
+          this.auth.guardarSesion(res.usuario);
+
+          this.error = '';
+
+          this.router.navigate(['/index']);
+
         } else {
+
           this.error = res.message;
+
         }
+
       },
       error: () => {
+
         this.error = 'Error en el servidor';
+
       }
     });
   }

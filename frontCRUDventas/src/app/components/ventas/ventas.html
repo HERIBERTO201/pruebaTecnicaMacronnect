@@ -1,0 +1,125 @@
+<h2>Ventas</h2>
+
+<form [formGroup]="formVenta">
+
+  <!-- CLIENTE -->
+  <label>Cliente</label>
+  <br>
+
+  <select formControlName="clienteID">
+    <option value="">Selecciona cliente</option>
+
+    @for (c of clientes; track c.id) {
+      <option [value]="c.id">{{ c.nombre }}</option>
+    }
+  </select>
+
+  <br><br>
+
+  <!-- PRODUCTO -->
+  <label>Producto</label>
+  <br>
+
+  <select formControlName="productoID">
+    <option value="">Selecciona producto</option>
+
+    @for (p of productos; track p.id) {
+      <option [value]="p.id">
+        {{ p.nombre }} - ${{ p.precio }}
+      </option>
+    }
+  </select>
+
+  <br><br>
+
+  <!-- CANTIDAD -->
+  <label>Cantidad</label>
+  <br>
+
+  <input type="number" formControlName="cantidad">
+
+  <br><br>
+
+  <button type="button" (click)="agregarProducto()">
+    Agregar al carrito
+  </button>
+
+</form>
+
+<hr>
+
+<!-- 🧠 CARRITO -->
+<h3>Detalle de venta</h3>
+
+<table border="1" width="100%">
+
+  <tr>
+    <th>Producto ID</th>
+    <th>Cantidad</th>
+    <th>Precio</th>
+    <th>Subtotal</th>
+    <th>Acción</th>
+  </tr>
+
+  @if (carrito.length === 0) {
+    <tr>
+      <td colspan="5" style="text-align:center;">
+        No hay productos en la venta
+      </td>
+    </tr>
+  }
+
+  @for (item of carrito; let i = $index; track i) {
+
+    <tr>
+      <td>{{ item.productoID }}</td>
+      <td>{{ item.cantidad }}</td>
+      <td>{{ item.precioUnitario }}</td>
+      <td>{{ item.subtotal }}</td>
+      <td>
+        <button (click)="eliminarItem(i)">Eliminar</button>
+      </td>
+    </tr>
+
+  }
+
+</table>
+
+<hr>
+
+<h3>Total: {{ total }}</h3>
+
+<br>
+
+<button (click)="guardarVenta()" [disabled]="carrito.length === 0">
+  Guardar Venta
+</button>
+
+
+<hr>
+
+<h2>Historial de Ventas</h2>
+
+<table border="1" width="100%">
+
+  <tr>
+    <th>Folio</th>
+    <th>Fecha</th>
+    <th>Cliente</th>
+    <th>Total</th>
+    <th>Estado</th>
+  </tr>
+
+  @for (venta of ventas; track venta.id) {
+
+    <tr>
+      <td>{{ venta.folio }}</td>
+      <td>{{ venta.fecha }}</td>
+      <td>{{ venta.clienteId }}</td>
+      <td>{{ venta.total }}</td>
+      <td>{{ venta.estado }}</td>
+    </tr>
+
+  }
+
+</table>
