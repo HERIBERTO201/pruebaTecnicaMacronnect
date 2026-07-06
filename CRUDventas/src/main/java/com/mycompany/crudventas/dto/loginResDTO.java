@@ -14,12 +14,14 @@ public class loginResDTO {
     private boolean success;
     private String usuario;
     private String message;
+    private String token;
 
     public loginResDTO() {}
 
-    public loginResDTO(boolean success, String usuario, String message) {
+    public loginResDTO(boolean success, String usuario, String message, String token) {
         this.success = success;
         this.usuario = usuario;
+        this.token = token;
         this.message = message;
     }
 
@@ -45,5 +47,13 @@ public class loginResDTO {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+    
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 }

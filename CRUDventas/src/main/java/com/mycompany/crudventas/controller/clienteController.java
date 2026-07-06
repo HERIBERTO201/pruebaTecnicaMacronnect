@@ -9,6 +9,7 @@ import com.mycompany.crudventas.dto.clienteDTO;
 import com.mycompany.crudventas.service.clienteService;
 import java.util.List;
 import java.util.Optional;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,23 +33,23 @@ public class clienteController {
     }
 
     @GetMapping("/{id}")
-    public Optional<clienteDTO> obtenerPorId(@PathVariable Long id) {
+    public Optional<clienteDTO> obtenerPorId(@Valid @PathVariable Long id) {
         return service.obtenerPorId(id);
     }
 
     @PostMapping
-    public clienteDTO guardar(@RequestBody clienteDTO dto) {
+    public clienteDTO guardar(@Valid @RequestBody clienteDTO dto) {
         return service.guardar(dto);
     }
 
     @PutMapping("/{id}")
-    public clienteDTO actualizar(@PathVariable Long id,
+    public clienteDTO actualizar(@Valid @PathVariable Long id,
             @RequestBody clienteDTO cliente) {
         return service.actualizar(id, cliente);
     }
 
     @DeleteMapping("/{id}")
-    public void eliminar(@PathVariable Long id) {
+    public void eliminar(@Valid @PathVariable Long id) {
         service.eliminar(id);
     }
 

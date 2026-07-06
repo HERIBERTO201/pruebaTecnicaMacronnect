@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.mycompany.crudventas.dto.loginReqDTO;
 import com.mycompany.crudventas.dto.loginResDTO;
 import com.mycompany.crudventas.service.loginService;
+import javax.validation.Valid;
 
 /**
  *
@@ -24,7 +25,7 @@ public class loginController {
     private loginService service;
     
     @PostMapping("/login")
-    public loginResDTO login(@RequestBody loginReqDTO request) {
+    public loginResDTO login(@Valid @RequestBody loginReqDTO request) {
         return service.login(request);
     }
     

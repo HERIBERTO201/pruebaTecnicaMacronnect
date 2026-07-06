@@ -1,6 +1,9 @@
+C:\Users\herio\OneDrive\Escritorio\pruebaTecnicaMacronnect\CRUDventas\src\main\java\com\mycompany\crudventas\exception\badRequestException.java
 C:\Users\herio\OneDrive\Escritorio\pruebaTecnicaMacronnect\CRUDventas\src\main\java\com\mycompany\crudventas\dto\clienteDTO.java
 C:\Users\herio\OneDrive\Escritorio\pruebaTecnicaMacronnect\CRUDventas\src\main\java\com\mycompany\crudventas\service\ventaService.java
 C:\Users\herio\OneDrive\Escritorio\pruebaTecnicaMacronnect\CRUDventas\src\main\java\com\mycompany\crudventas\entity\productoEntity.java
+C:\Users\herio\OneDrive\Escritorio\pruebaTecnicaMacronnect\CRUDventas\src\main\java\com\mycompany\crudventas\exception\resourceNotFoundException.java
+C:\Users\herio\OneDrive\Escritorio\pruebaTecnicaMacronnect\CRUDventas\src\main\java\com\mycompany\crudventas\security\JwtFilter.java
 C:\Users\herio\OneDrive\Escritorio\pruebaTecnicaMacronnect\CRUDventas\src\main\java\com\mycompany\crudventas\repository\ventaRepository.java
 C:\Users\herio\OneDrive\Escritorio\pruebaTecnicaMacronnect\CRUDventas\src\main\java\com\mycompany\crudventas\entity\clienteEntity.java
 C:\Users\herio\OneDrive\Escritorio\pruebaTecnicaMacronnect\CRUDventas\src\main\java\com\mycompany\crudventas\controller\productoController.java
@@ -13,7 +16,9 @@ C:\Users\herio\OneDrive\Escritorio\pruebaTecnicaMacronnect\CRUDventas\src\main\j
 C:\Users\herio\OneDrive\Escritorio\pruebaTecnicaMacronnect\CRUDventas\src\main\java\com\mycompany\crudventas\entity\detalleVentaEntity.java
 C:\Users\herio\OneDrive\Escritorio\pruebaTecnicaMacronnect\CRUDventas\src\main\java\com\mycompany\crudventas\controller\ventaController.java
 C:\Users\herio\OneDrive\Escritorio\pruebaTecnicaMacronnect\CRUDventas\src\main\java\com\mycompany\crudventas\entity\loginEntity.java
+C:\Users\herio\OneDrive\Escritorio\pruebaTecnicaMacronnect\CRUDventas\src\main\java\com\mycompany\crudventas\security\JwtService.java
 C:\Users\herio\OneDrive\Escritorio\pruebaTecnicaMacronnect\CRUDventas\src\main\java\com\mycompany\crudventas\service\detalleVentaService.java
+C:\Users\herio\OneDrive\Escritorio\pruebaTecnicaMacronnect\CRUDventas\src\main\java\com\mycompany\crudventas\exception\globalExceptionHandler.java
 C:\Users\herio\OneDrive\Escritorio\pruebaTecnicaMacronnect\CRUDventas\src\main\java\com\mycompany\crudventas\entity\ventastatus.java
 C:\Users\herio\OneDrive\Escritorio\pruebaTecnicaMacronnect\CRUDventas\src\main\java\com\mycompany\crudventas\dto\loginResDTO.java
 C:\Users\herio\OneDrive\Escritorio\pruebaTecnicaMacronnect\CRUDventas\src\main\java\com\mycompany\crudventas\service\loginService.java

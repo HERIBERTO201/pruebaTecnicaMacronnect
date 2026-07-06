@@ -9,6 +9,7 @@ import com.mycompany.crudventas.dto.detalleVentaDTO;
 import com.mycompany.crudventas.service.detalleVentaService;
 import java.util.List;
 import java.util.Optional;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 /**
@@ -35,12 +36,12 @@ public class detalleVentaController {
     }
 
     @PostMapping
-    public detalleVentaDTO guardar(@RequestBody detalleVentaDTO dto) {
+    public detalleVentaDTO guardar(@Valid @RequestBody detalleVentaDTO dto) {
         return service.guardar(dto);
     }
 
     @PutMapping("/{id}")
-    public detalleVentaDTO actualizar(@PathVariable Long id,
+    public detalleVentaDTO actualizar(@Valid @PathVariable Long id,
                                       @RequestBody detalleVentaDTO dto) {
         return service.actualizar(id, dto);
     }

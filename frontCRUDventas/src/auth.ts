@@ -20,6 +20,14 @@ export class Auth {
     localStorage.setItem('usuario', usuario);
   }
 
+  guardarToken(token: string) {
+    localStorage.setItem('token', token);
+  }
+
+  getToken() {
+    return localStorage.getItem('token');
+  }
+
   getUsuario() {
     return localStorage.getItem('usuario');
   }

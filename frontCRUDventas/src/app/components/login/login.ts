@@ -38,6 +38,8 @@ export class Login {
 
           this.auth.guardarSesion(res.usuario);
 
+          this.auth.guardarToken(res.token);
+          
           this.error = '';
 
           this.router.navigate(['/index']);

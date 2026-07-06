@@ -3,12 +3,16 @@ com\mycompany\crudventas\dto\productoDTO.class
 com\mycompany\crudventas\controller\loginController.class
 com\mycompany\crudventas\controller\productoController.class
 com\mycompany\crudventas\entity\productoEntity.class
+com\mycompany\crudventas\exception\badRequestException.class
 com\mycompany\crudventas\entity\ventastatus.class
+com\mycompany\crudventas\exception\resourceNotFoundException.class
 com\mycompany\crudventas\service\productoService.class
 com\mycompany\crudventas\dto\ventaDTO.class
 com\mycompany\crudventas\service\loginService.class
+com\mycompany\crudventas\exception\globalExceptionHandler.class
 com\mycompany\crudventas\repository\loginRepository.class
 com\mycompany\crudventas\entity\ventaEntity.class
+com\mycompany\crudventas\security\JwtService.class
 com\mycompany\crudventas\controller\ventaController.class
 com\mycompany\crudventas\entity\loginEntity.class
 com\mycompany\crudventas\repository\detalleVentaRepository.class
@@ -27,3 +31,4 @@ com\mycompany\crudventas\service\detalleVentaService.class
 com\mycompany\crudventas\dto\clienteDTO.class
 com\mycompany\crudventas\service\ventaService.class
 com\mycompany\crudventas\repository\ventaRepository.class
+com\mycompany\crudventas\security\JwtFilter.class

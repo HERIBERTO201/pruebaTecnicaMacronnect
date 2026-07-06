@@ -9,6 +9,7 @@ import com.mycompany.crudventas.dto.ventaDTO;
 import com.mycompany.crudventas.service.ventaService;
 import java.util.List;
 import java.util.Optional;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -36,13 +37,8 @@ public class ventaController {
         return service.obtenerPorId(id);
     }
 
-    @PostMapping
-    public ventaDTO guardar(@RequestBody ventaDTO dto) {
-        return service.guardar(dto);
-    }
-
     @PutMapping("/{id}")
-    public ventaDTO actualizar(@PathVariable Long id,
+    public ventaDTO actualizar(@Valid @PathVariable Long id,
             @RequestBody ventaDTO dto) {
         return service.actualizar(id, dto);
     }
@@ -58,7 +54,7 @@ public class ventaController {
     }
 
     @PostMapping("/registrar")
-    public ventaDTO registrarVenta(@RequestBody ventaDTO dto) {
+    public ventaDTO registrarVenta(@Valid @RequestBody ventaDTO dto) {
         return service.registrarVenta(dto);
     }
 

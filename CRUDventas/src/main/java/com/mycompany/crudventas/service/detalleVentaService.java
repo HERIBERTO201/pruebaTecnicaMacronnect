@@ -17,6 +17,7 @@ import com.mycompany.crudventas.repository.ventaRepository;
 import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.mycompany.crudventas.exception.resourceNotFoundException;
 
 /**
  *
@@ -92,9 +93,9 @@ public class detalleVentaService {
     private detalleVentaEntity toEntity(detalleVentaDTO dto) {
         detalleVentaEntity detalle = new detalleVentaEntity();
         ventaEntity venta = ventaRepository.findById(dto.getVentaID())
-                .orElseThrow(() -> new RuntimeException("Venta no encontrada"));
+                .orElseThrow(() -> new resourceNotFoundException("Venta no encontrada"));
         productoEntity producto = productoRepository.findById(dto.getProductoID())
-                .orElseThrow(() -> new RuntimeException("Producto no encontrado"));
+                .orElseThrow(() -> new resourceNotFoundException("Producto no encontrado"));
         detalle.setVenta(venta);
         detalle.setProducto(producto);
         detalle.setCantidad(dto.getCantidad());
